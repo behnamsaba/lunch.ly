@@ -81,6 +81,21 @@ class Customer {
   fullName (){
     return (this.firstName + " " + this.lastName)
   }
+
+  //search function
+  static async search(search){
+    const results = await db.query(
+      `SELECT id, 
+      first_name AS "firstName",  
+      last_name AS "lastName", 
+      phone, 
+      notes
+      FROM customers
+      WHERE first_name @@($1) OR last_name @@($1);`,[search]);
+    return results.rows.map(c => new Customer(c));
+
+
+  }
 }
 
 module.exports = Customer;

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<h1>Search Customer</h1>
+
+<form action="/search/" method="POST">
+  <div class="form-group">
+    <label for="search">Search Box:</label>
+    <input id="search" class="form-control" name="search">
+  </div>
+  <button class="btn btn-primary">Search</button>
+  <a href="/" class="btn btn-danger">Cancel</a>
+</form>
+
+{% endblock %}
